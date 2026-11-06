@@ -17,13 +17,27 @@ GESLAAGD
   en de structuur van Apples officiële Object Capture-voorbeeldproject.
 
 NOG NODIG
-- Compileren en linken met Xcode op de macOS-cloudrunner.
 - Ondertekenen en installeren met AltStore Classic op de iPhone 16 Pro.
 - Echte camera- en LiDAR-opname, reconstructie, Quick Look en export op dat toestel.
 - Praktijktest van pauzeren/hervatten bij een onderbreking en van opnieuw berekenen
   vanuit een volledig afgeronde, bewaarde opname.
 
-Deze controles bewijzen geen geslaagde iOS-build of scan. De tijdelijke testfixtures
+GESLAAGDE CLOUDVALIDATIE
+- Xcode 16.4 (16F6), iPhoneOS 18.5 SDK, Release, arm64, minimum iOS 18.0.
+- Compileren en linken geslaagd: BUILD SUCCEEDED.
+- ObjectScan-unsigned.ipa gemaakt en als ObjectScan-iPhone geüpload naar GitHub Actions.
+- Artifact gedownload; SHA-256 gecontroleerd:
+  0a2d953fe9b603294cc0ecec0a5dbed2e0947dafbf001f2e2476d5d9e98aae15
+- ZIP en geneste IPA gecontroleerd op integriteit.
+- Werkelijk Mach-O-uitvoerbestand gecontroleerd: arm64 en uitvoerrechten aanwezig.
+- Info.plist gecontroleerd: iPhoneOS, minimum iOS 18.0, cameratoestemming aanwezig.
+- PrivacyInfo.xcprivacy aanwezig. Er is geen provisioningprofiel ingesloten;
+  de ondertekening voor het toestel gebeurt met AltStore.
+- Geteste codecommit: d80b8e13f7c25fe6fd87d97115dfd4edef98201e
+- Build: https://github.com/ftmvanloon-web/ObjectScan/actions/runs/42296926877
+- Download: https://github.com/ftmvanloon-web/ObjectScan/actions/runs/42296926877/artifacts/13542173083
+
+De geslaagde build bewijst nog geen werkende fysieke scan. De tijdelijke testfixtures
 van de IPA-verpakker waren geen iOS-apps en worden niet meegeleverd.
 
 Eerste acceptatietest op het toestel:

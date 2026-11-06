@@ -2,7 +2,16 @@
 
 Een klein SwiftUI-project voor iPhone met LiDAR. De app gebruikt **Apple Object Capture**: foto’s, dieptegegevens en begeleide opname worden samen gebruikt voor een 3D-model. De reconstructie gebeurt op de iPhone. Scans hebben geen exportlimiet of betaalmuur.
 
-**Status:** startproject. De broncode is hier op syntaxis en projectstructuur gecontroleerd. Een Xcode-build en een test op een echte iPhone zijn nog nodig. Er zit daarom nog geen installeerbare IPA in dit broncodepakket. De meegeleverde GitHub Actions-workflow maakt die IPA.
+**Status:** de Releasebuild voor een echte iPhone is op 6 november 2026 geslaagd met Xcode 16.4. Het IPA-bestand is gecontroleerd op pakketstructuur, arm64, iOS 18 en cameratoestemming. De eerste opname en export moeten nog op een echte iPhone worden getest.
+
+## Snel installeren op jouw iPhone
+
+1. [Download de geslaagde build op GitHub](https://github.com/ftmvanloon-web/ObjectScan/actions/runs/42296926877/artifacts/13542173083). Log in met je GitHub-account en pak **ObjectScan-iPhone.zip** uit. Daarin zit **ObjectScan-unsigned.ipa**.
+2. Installeer **AltStore Classic** op je iPhone via je Windows-pc. Volg daarvoor de [officiële Windows-handleiding](https://faq.altstore.io/altstore-classic/how-to-install-altstore-windows), inclusief de Apple-componenten, vertrouwen van je pc en Ontwikkelaarsmodus.
+3. Zet de IPA in **Bestanden** op je iPhone, bijvoorbeeld via iCloud Drive of OneDrive. Laat AltServer draaien en kies in AltStore **My Apps → + → ObjectScan-unsigned.ipa**. AltStore ondertekent het bestand lokaal en installeert de app.
+4. Open **ObjectScan**, geef cameratoegang en probeer eerst een mat, stilstaand object in egaal licht. Maak overlappende rondes van verschillende hoogtes en kies daarna **Maak 3D-model**.
+
+Met een gratis Apple-account vernieuw je de app uiterlijk elke zeven dagen via **AltStore → My Apps → Refresh All**, terwijl AltServer op je pc bereikbaar is. De download op GitHub wordt zeven dagen bewaard; de workflow kan daarna opnieuw een download maken. De app zelf heeft geen abonnement of exportbetaalmuur.
 
 Open `START-HIER.html` voor de volledige Nederlandse handleiding voor Windows.
 
@@ -50,7 +59,7 @@ In Blender: **File → Import → Universal Scene Description** en kies het USDZ
 ## Project
 
 ```text
-.github/workflows/build-ios.yml       Handmatige cloudbuild
+.github/workflows/build-ios.yml       Automatische en handmatige cloudbuild
 ObjectScan.xcodeproj/                 Xcode-project met gedeeld schema
 ObjectScan/ObjectScanApp.swift        Startpunt
 ObjectScan/LibraryView.swift          Bibliotheek, export en Quick Look
@@ -65,7 +74,7 @@ Er zijn geen externe Swift-pakketten, server, API-sleutel, account in de scan-ap
 
 ## Validatie en volgende controle
 
-Zie `VALIDATIE.txt` voor de uitgevoerde controles. Deze omgeving is Linux en heeft geen Xcode of iPhone. De Swift-parser is geen Swift-compiler en bewijst geen werkende iOS-build. De eerste echte acceptatiestap is een groene GitHub Actions-build, daarna opname → berekening → export op de iPhone 16 Pro.
+Zie `VALIDATIE.txt` voor de uitgevoerde controles. De [Xcode-build is geslaagd](https://github.com/ftmvanloon-web/ObjectScan/actions/runs/42296926877). De app is gebouwd voor een echte iPhone met iOS 18 of nieuwer. De volgende acceptatiestap is opname → berekening → voorvertoning → export op de iPhone 16 Pro. De cloudbuild test de camera en LiDAR niet fysiek.
 
 Als de cloudbuild mislukt: open in Actions de stap **Build unsigned iPhone app** en bewaar de eerste `error:`-melding met enkele regels context. Dat is het bruikbare aanknopingspunt om eventuele compilerproblemen te herstellen.
 
