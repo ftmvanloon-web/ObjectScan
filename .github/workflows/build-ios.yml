@@ -1,0 +1,37 @@
+name: Build ObjectScan for iPhone
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'ObjectScan/**'
+      - 'ObjectScan.xcodeproj/**'
+      - 'scripts/**'
+      - '.github/workflows/build-ios.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: objectscan-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Build unsigned iPhone app
+        run: bash scripts/build-ios.sh
+      - name: Make app available for download
+        uses: actions/upload-artifact@v4
+        with:
+          name: ObjectScan-iPhone
+          path: dist/ObjectScan-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7

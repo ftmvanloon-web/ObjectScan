@@ -1,0 +1,35 @@
+ObjectScan — validatie op 6 november 2026
+
+Uitgevoerd in een Linux-werkomgeving:
+
+GESLAAGD
+- Vijf Swift-bronbestanden geparseerd met tree-sitter-swift: geen syntaxisfouten.
+- project.pbxproj geparseerd als OpenStep-plist.
+- Alle Xcode-objectverwijzingen bestaan; alle vijf Swift-bestanden staan in de Sources-buildfase.
+- Gedeeld Xcode-schema geparseerd; targetverwijzingen gecontroleerd.
+- Info.plist, PrivacyInfo.xcprivacy en de asset-JSON-bestanden geparseerd.
+- GitHub Actions-YAML geparseerd; handmatige start, standaard macos-15-runner en contents:read-rechten gecontroleerd.
+- Bash-buildscript gecontroleerd met bash -n.
+- Python-IPA-verpakker uitgevoerd met tijdelijke testfixtures: Payload-structuur, bestandsinhoud,
+  uitvoerrechten en symbolische links correct. Simulatorinvoer en ontbrekend uitvoerbestand afgewezen.
+- Appicoon is een RGB-afbeelding van 1024 x 1024 pixels.
+- Gebruikte Object Capture- en Photogrammetry-API's vergeleken met Apples documentatie
+  en de structuur van Apples officiële Object Capture-voorbeeldproject.
+
+NOG NODIG
+- Compileren en linken met Xcode op de macOS-cloudrunner.
+- Ondertekenen en installeren met AltStore Classic op de iPhone 16 Pro.
+- Echte camera- en LiDAR-opname, reconstructie, Quick Look en export op dat toestel.
+- Praktijktest van pauzeren/hervatten bij een onderbreking en van opnieuw berekenen
+  vanuit een volledig afgeronde, bewaarde opname.
+
+Deze controles bewijzen geen geslaagde iOS-build of scan. De tijdelijke testfixtures
+van de IPA-verpakker waren geen iOS-apps en worden niet meegeleverd.
+
+Eerste acceptatietest op het toestel:
+1. Camera toestaan; een mat, stilstaand object volledig in beeld nemen.
+2. Object herkennen; kader aanpassen; twee overlappende rondes opnemen.
+3. 3D-model berekenen terwijl de app openblijft.
+4. Model bekijken en via Exporteren naar Bestanden opslaan.
+5. USDZ op Windows openen in Blender en de geometrie/texturen controleren.
+6. App sluiten en openen: opgeslagen model blijft in de bibliotheek.
