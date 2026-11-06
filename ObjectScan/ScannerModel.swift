@@ -49,6 +49,7 @@ final class ScannerModel {
             return
         }
         let session = ObjectCaptureSession()
+        session.isAutoCaptureEnabled = true
         var configuration = ObjectCaptureSession.Configuration()
         configuration.checkpointDirectory = record.checkpoints
         configuration.isOverCaptureEnabled = false

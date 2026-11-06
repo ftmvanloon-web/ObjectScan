@@ -105,7 +105,7 @@ enum ScanError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .unsupported: return "Dit apparaat ondersteunt Object Capture niet. Gebruik een iPhone met LiDAR en iOS 17 of nieuwer."
+        case .unsupported: return "Dit apparaat ondersteunt Object Capture niet. Gebruik een iPhone met LiDAR en iOS 18 of nieuwer."
         case .cameraDenied: return "Geef ObjectScan toegang tot de camera via Instellingen."
         case .missingResult: return "Er is geen volledig 3D-model gemaakt. Probeer de bewaarde opname opnieuw te verwerken."
         case .interrupted: return "De berekening is onderbroken. Je bronbeelden zijn bewaard."
