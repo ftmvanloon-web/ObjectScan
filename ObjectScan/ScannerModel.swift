@@ -1,6 +1,7 @@
 import AVFoundation
 import Observation
 import RealityKit
+import SwiftUI
 
 @MainActor
 @Observable
